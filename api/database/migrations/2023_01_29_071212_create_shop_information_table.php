@@ -14,14 +14,12 @@ return new class () extends Migration {
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('shop_information', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->boolean('admin')->comment('管理者権限');
-            $table->rememberToken();
+            $table->string('shop_name')->comment('店名');
+            $table->string('latitude')->comment('緯度');
+            $table->string('longitude')->comment('経度');
+            $table->string('shop_image_path')->nullable()->comment('店舗画像');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class () extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('shop_information');
     }
 };
