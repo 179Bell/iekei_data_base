@@ -20,7 +20,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->admin !== true) {
-            return redirect()->route('/');
+            return redirect()->route('top');
         }
 
         return $next($request);
