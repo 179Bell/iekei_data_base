@@ -68,7 +68,7 @@ class CreateActions extends Command
      */
     public function createActionsClass(): void
     {
-        $content = "<?php\n\ndeclare(strict_types=1);\n\nnamespace App\Http\Actions;\n\nclass $this->class_name" . " extends Controller\n{\n\n}";
+        $content = "<?php\n\ndeclare(strict_types=1);\n\nnamespace App\Http\Actions;\n\nclass $this->class_name" . " extends Controller\n{\n    public function __construct()\n    {\n\n    }\n\n\n    public function __invoke()\n    {\n\n    }\n}";
         file_put_contents($this->file_name, $content);
     }
 
