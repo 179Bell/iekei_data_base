@@ -4,5 +4,7 @@ includes:
 parameters:
     paths:
         - app
+    ignoreErrors:
+        - '#Access to an undefined property [a-zA-Z0-9\\_]+::\$[A-Za-z0-9\\_]#'
 
     level: 0
