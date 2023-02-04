@@ -2,9 +2,11 @@ includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 
 parameters:
+    level: 0
     paths:
         - app
+        - tests
     ignoreErrors:
         - '#Access to an undefined property [a-zA-Z0-9\\_]+::\$[A-Za-z0-9\\_]#'
+        - '#Call to an undefined method [a-zA-Z0-9\\_]+::[A-Za-z0-9\\_()]+#'
 
-    level: 0

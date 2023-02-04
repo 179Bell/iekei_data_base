@@ -6,7 +6,7 @@ namespace Tests\Unit;
 
 use App\Http\Repositories\ShopInfoRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ShopInfoRepositoryTest extends TestCase
 {
