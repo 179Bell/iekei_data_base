@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ShopInfoServiceTest extends TestCase
 {
@@ -16,7 +17,8 @@ class ShopInfoServiceTest extends TestCase
         parent::setUp();
 
         $this->service = $this->app->make('\App\Http\Services\ShopInfoService');
-        $this->user = $this->artisan('db:seed', ['--class' => 'UserSeeder']);
+        $this->artisan('db:seed', ['--class' => 'UserSeeder']);
+        $this->user = User::find(1);
     }
 
     /**
@@ -24,7 +26,7 @@ class ShopInfoServiceTest extends TestCase
      */
     public function 管理者は管理画面トップにアクセスできるか()
     {
-        $response = $this->actingAs($this->user)->get(route('dashboard.top'));
+        $response = $this->actingAs($this->user)->get(route('dashboard'));
 
         $response->assertStatus(200)
             ->assertViewIs('dashboard.top');
@@ -35,9 +37,9 @@ class ShopInfoServiceTest extends TestCase
      */
     public function 店舗情報を全件取得()
     {
-        $this->seed();
+        $this->artisan('db:seed', ['--class' => 'ShopInformationSeeder']);
 
         $result = $this->service->getAll();
-        $this->assertSame(3, $result->count());
+        $this->assertSame(3, count($result));
     }
 }
