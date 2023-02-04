@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('title', '管理画面トップ')
-
+@php
+    dd($shopInfos);
+@endphp
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

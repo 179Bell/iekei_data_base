@@ -22,5 +22,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', \App\Http\Actions\IndexShopInfoGetActions::class)->name('dashboard');
 });
