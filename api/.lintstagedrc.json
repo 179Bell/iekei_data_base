@@ -1,6 +1,7 @@
 {
     "*.php": [
         "composer lint",
-        "composer format"
+        "composer format",
+        "composer test"
     ]
 }

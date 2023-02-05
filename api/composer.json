@@ -54,6 +54,9 @@
         ],
         "format": [
             "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php"
+        ],
+        "test": [
+            "@php artisan test"
         ]
     },
     "extra": {
