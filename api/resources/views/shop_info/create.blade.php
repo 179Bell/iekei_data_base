@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '管理画面トップ')
+@section('title', '店舗情報登録')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,7 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
+                   @endif
 
                     {{ __('You are logged in!') }}
                 </div>

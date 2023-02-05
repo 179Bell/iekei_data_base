@@ -13,4 +13,29 @@ class ShopInfoRepository implements ShopInfoRepositoryInterface
     {
         return ShopInformation::all();
     }
+
+    public function create(array $data): ShopInformation
+    {
+        return ShopInformation::create($data);
+    }
+
+    public function delete(string $shopInfoId): int
+    {
+        return ShopInformation::destroy($shopInfoId);
+    }
+
+    public function update(string $shopInfoId, array $data): bool
+    {
+        $shopInfo = ShopInformation::find($shopInfoId);
+        $shopInfo->shop_name = $data['shop_name'];
+        $shopInfo->latitude = $data['latitude'];
+        $shopInfo->longitude = $data['longitude'];
+
+        return $shopInfo->save();
+    }
+
+    public function show(string $shopInfoId): ShopInformation
+    {
+        return ShopInformation::find($shopInfoId);
+    }
 }
