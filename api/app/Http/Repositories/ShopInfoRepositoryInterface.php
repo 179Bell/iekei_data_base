@@ -39,7 +39,7 @@ interface ShopInfoRepositoryInterface
      * @param array $data
      * @return integer
      */
-    public function update(string $shopInfoId, array $data): int;
+    public function update(string $shopInfoId, array $data): bool;
 
     /**
      * 店舗情報の詳細を取得

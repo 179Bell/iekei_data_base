@@ -24,10 +24,14 @@ class ShopInfoRepository implements ShopInfoRepositoryInterface
         return ShopInformation::destroy($shopInfoId);
     }
 
-    public function update(string $shopInfoId, array $data): int
+    public function update(string $shopInfoId, array $data): bool
     {
         $shopInfo = ShopInformation::find($shopInfoId);
-        return $shopInfo->save($data);
+        $shopInfo->shop_name = $data['shop_name'];
+        $shopInfo->latitude = $data['latitude'];
+        $shopInfo->longitude = $data['longitude'];
+
+        return $shopInfo->save();
     }
 
     public function show(string $shopInfoId): ShopInformation
