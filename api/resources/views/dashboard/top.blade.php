@@ -2,23 +2,36 @@
 
 @section('title', '管理画面トップ')
 
+@include('layouts.header')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
+        <div class="col-md-10">
+            <div class="alert alert-success text-center">
+                @if (session('update_success'))
+                    {{ session('update_success') }}
+                @elseif (session('create_success'))
+                    {{ session('crete_success') }}
+                @elseif (session('delete_success'))
+                    {{ session('delete_success') }}
+                @endif
             </div>
+
+            @foreach ($shopInfos as $shopInfo)
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h5>{{ $shopInfo->shop_name }}</h5>
+                        <div class="d-flex flex-row justify-content-end">
+                            <button onclick="location.href='{{ route('shop_info.detail', ['id' => $shopInfo->id]) }}'" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></button>
+                            <form action="{{ route('shop_info.delete', ['id' => $shopInfo->id]) }}" method="post">
+                                @csrf
+                                <button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

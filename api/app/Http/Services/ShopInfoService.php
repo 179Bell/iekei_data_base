@@ -60,7 +60,7 @@ class ShopInfoService extends Controller
      * @param array $data
      * @return integer
      */
-    public function updateShopInfo(string $shopInfoId, array $data): int
+    public function updateShopInfo(string $shopInfoId, array $data): bool
     {
         return $this->repository->update($shopInfoId, $data);
     }

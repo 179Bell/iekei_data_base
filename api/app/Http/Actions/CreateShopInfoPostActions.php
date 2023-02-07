@@ -33,6 +33,6 @@ class CreateShopInfoPostActions extends Controller
 
         $this->service->createShopInfo($data);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('create_success', '登録に成功しました');
     }
 }

@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 
 class UpdateShopInfoPostActions extends Controller
 {
-    private const SUCCEEDED = 1;
-
     public function __construct(ShopInfoService $service)
     {
         $this->service = $service;
@@ -28,8 +26,8 @@ class UpdateShopInfoPostActions extends Controller
 
         $status = $this->service->updateShopInfo($shopInfoId, $data);
 
-        if ($status === self::SUCCEEDED) {
-            return redirect()->route('dashboard');
+        if ($status) {
+            return redirect()->route('dashboard')->with('update_success', '更新に成功しました');
         }
 
         return back()->with('update_failed', '更新に失敗しました');

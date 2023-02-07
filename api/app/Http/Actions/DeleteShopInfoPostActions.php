@@ -25,7 +25,7 @@ class DeleteShopInfoPostActions extends Controller
         $status = $this->service->deleteShopInfo($shopInfoId);
 
         if ($status === self::SUCCEEDED) {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('delete_success', ',削除に成功しました');
         }
 
         return back()->with('delete_failed', '削除に失敗しました');
