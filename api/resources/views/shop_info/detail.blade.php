@@ -7,13 +7,23 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10 border">
+        @if (session('update_failed'))
             <div class="alert alert-danger text-center">
-                @if (session('update_failed'))
-                    {{ session('update_failed') }}
-                @endif
+                {{ session('update_failed') }}
             </div>
+        @endif
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="col-md-10 border">
             <form action="{{ route('shop_info.update', ['id' => $shopInfo->id]) }}" method="post">
                 @csrf
                 <div class="my-2">

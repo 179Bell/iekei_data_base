@@ -8,15 +8,19 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="alert alert-success text-center">
-                @if (session('update_success'))
+            @if (session('update_success'))
+                <div class="alert alert-success text-center">
                     {{ session('update_success') }}
-                @elseif (session('create_success'))
+                </div>
+            @elseif (session('create_success'))
+                <div class="alert alert-success text-center">
                     {{ session('crete_success') }}
-                @elseif (session('delete_success'))
+                </div>
+            @elseif (session('delete_success'))
+                <div class="alert alert-success text-center">
                     {{ session('delete_success') }}
-                @endif
-            </div>
+                </div>
+            @endif
 
             @foreach ($shopInfos as $shopInfo)
                 <div class="card mt-2">
