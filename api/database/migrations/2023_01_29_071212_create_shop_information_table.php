@@ -20,6 +20,9 @@ return new class () extends Migration {
             $table->string('latitude')->comment('緯度');
             $table->string('longitude')->comment('経度');
             $table->string('shop_image_path')->nullable()->comment('店舗画像');
+            $table->string('prefecture')->comment('都道府県');
+            $table->string('city_name')->comment('市区町村');
+            $table->string('address')->comment('番地など');
             $table->timestamps();
         });
     }
