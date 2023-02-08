@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Actions;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ShopInformationRequest as Request;
 use App\Http\Services\ShopInfoService;
-use Illuminate\Http\Request;
 
 class UpdateShopInfoPostActions extends Controller
 {
