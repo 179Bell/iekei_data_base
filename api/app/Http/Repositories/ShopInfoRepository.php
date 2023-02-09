@@ -28,9 +28,10 @@ class ShopInfoRepository implements ShopInfoRepositoryInterface
     {
         $shopInfo = ShopInformation::find($shopInfoId);
         $shopInfo->shop_name = $data['shop_name'];
-        $shopInfo->latitude = $data['latitude'];
-        $shopInfo->longitude = $data['longitude'];
-
+        $shopInfo->latlong = $data['latlong'];
+        $shopInfo->prefecture = $data['prefecture'];
+        $shopInfo->city_name = $data['city_name'];
+        $shopInfo->address = $data['address'];
         return $shopInfo->save();
     }
 
