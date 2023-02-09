@@ -13,8 +13,10 @@ class ShopInformation extends Model
 
     protected $fillable = [
         'shop_name',
-        'latitude',
-        'longitude',
+        'latlong',
+        'prefecture',
+        'city_name',
+        'address'
     ];
 
     public function user()

@@ -37,16 +37,20 @@ class ShopInfoRepositoryTest extends TestCase
     {
         $data = [
             'shop_name' => 'テスト店舗名',
-            'latitude' => '35.000000',
-            'longitude' => '139.000000'
+            'latlong' => '35.000000, 139.000000',
+            'prefecture' => '神奈川県',
+            'city_name' => '横浜市港北区',
+            'address' => '綱島東1-6-24'
         ];
 
         $result = $this->repository->create($data);
 
         $this->assertDatabaseHas('shop_information', [
             'shop_name' => $data['shop_name'],
-            'latitude' => $data['latitude'],
-            'longitude' => $data['longitude']
+            'latlong' => $data['latlong'],
+            'prefecture' => $data['prefecture'],
+            'city_name' => $data['city_name'],
+            'address' => $data['address'],
         ]);
     }
 
@@ -57,8 +61,10 @@ class ShopInfoRepositoryTest extends TestCase
     {
         $data = [
             'shop_name' => 'テスト店舗名',
-            'latitude' => '35.000000',
-            'longitude' => '139.000000'
+            'latlong' => '35.000000, 139.000000',
+            'prefecture' => '神奈川県',
+            'city_name' => '横浜市港北区',
+            'address' => '綱島東1-6-24'
         ];
 
         $shopInfo = $this->repository->create($data);
@@ -66,8 +72,10 @@ class ShopInfoRepositoryTest extends TestCase
 
         $this->assertDatabaseMissing('shop_information', [
             'shop_name' => $data['shop_name'],
-            'latitude' => $data['latitude'],
-            'longitude' => $data['longitude']
+            'latlong' => $data['latlong'],
+            'prefecture' => $data['prefecture'],
+            'city_name' => $data['city_name'],
+            'address' => $data['address'],
         ]);
     }
 
@@ -80,15 +88,19 @@ class ShopInfoRepositoryTest extends TestCase
 
         $data = [
             'shop_name' => '武虎家',
-            'latitude' => '35.53629411677219',
-            'longitude' => '139.63507570516012',
+            'latlong' => '35.53630702628978, 139.6350802676341',
+            'prefecture' => '神奈川県',
+            'city_name' => '横浜市港北区',
+            'address' => '綱島東1-6-24'
         ];
 
         $result = $this->repository->show('1');
         $this->assertSame(1, $result->id);
         $this->assertSame($data['shop_name'], $result->shop_name);
-        $this->assertSame($data['latitude'], $result->latitude);
-        $this->assertSame($data['longitude'], $result->longitude);
+        $this->assertSame($data['latlong'], $result->latlong);
+        $this->assertSame($data['prefecture'], $result->prefecture);
+        $this->assertSame($data['city_name'], $result->city_name);
+        $this->assertSame($data['address'], $result->address);
     }
 
     /**
@@ -100,8 +112,10 @@ class ShopInfoRepositoryTest extends TestCase
 
         $data = [
             'shop_name' => 'テスト店舗名',
-            'latitude' => '35.000000',
-            'longitude' => '139.000000'
+            'latlong' => '35.000000, 139.000000',
+            'prefecture' => '神奈川県',
+            'city_name' => '横浜市港北区',
+            'address' => '綱島東1-6-24'
         ];
 
         $this->repository->update('3', $data);
