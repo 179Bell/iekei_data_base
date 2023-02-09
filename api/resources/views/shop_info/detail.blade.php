@@ -31,12 +31,23 @@
                     <input class="form-control" type="text" name="shop_name" value={{ $shopInfo->shop_name }}>
                 </div>
                 <div class="my-2">
-                    <label class="form-label" for="latitude">緯度</label>
-                    <input class="form-control" type="text" name="latitude" value={{ $shopInfo->latitude }}>
+                    <label class="form-label" for="latitude">緯度・経度</label>
+                    <input class="form-control" type="text" name="latlong" value={{ $shopInfo->latlong }}>
                 </div>
                 <div class="my-2">
                     <label class="form-label" for="longitude">経度</label>
                     <input class="form-control" type="text" name="longitude" value={{ $shopInfo->longitude }}>
+                </div>
+                    <label class="form-label" for="prefecture">都道府県</label>
+                    <input class="form-control" type="text" name="prefecture" value={{ $shopInfo->prefecture}}>
+                </div>
+                <div class="my-2">
+                    <label class="form-label" for="city_name">市区町村</label>
+                    <input class="form-control" type="text" name="city_name" value={{ $shopInfo->city_name }}>
+                </div>
+                <div class="my-2">
+                    <label class="form-label" for="address">番地など</label>
+                    <input class="form-control" type="text" name="address" value={{ $shopInfo->address }}>
                 </div>
 
                 <div class="d-flex justify-content-center m-3">
