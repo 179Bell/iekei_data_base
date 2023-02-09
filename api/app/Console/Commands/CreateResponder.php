@@ -57,7 +57,29 @@ class CreateResponder extends Command
      */
     public function createResponderClass(): void
     {
-        $content = "<?php\n\ndeclare(strict_types=1);\n\nnamespace App\Http\Responders;\n\nclass $this->class_name"."\n{\n    public function __construct()\n    {\n\n    }\n\n    public function response()\n    {\n\n    }\n}";
+        $content = <<<EOD
+        <?php
+
+        declare(strict_types=1);
+
+        namespace App\Http\Responders;
+
+        use Illuminate\Http\Response;
+        use Illuminate\View\Factory as View;
+
+        class {$this->class_name}
+        {
+            public function __construct()
+            {
+
+            }
+
+            public function response()
+            {
+
+            }
+        }
+        EOD;
         file_put_contents($this->file_name, $content);
     }
 

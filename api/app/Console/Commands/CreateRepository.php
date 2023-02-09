@@ -64,7 +64,18 @@ class CreateRepository extends Command
      */
     public function createRepositoryClass(): void
     {
-        $content = "<?php\n\ndeclare(strict_types=1);\n\nnamespace App\Http\Repositories;\n\nclass $this->class_name"." implements " .$this->class_name."Interface\n{\n\n}";
+        $content = <<<EOD
+        <?php
+
+        declare(strict_types=1);
+
+        namespace App\Http\Repositories;
+
+        class {$this->class_name} implements {$this->class_name}Interface
+        {
+
+        }
+        EOD;
         file_put_contents($this->repository_name, $content);
     }
 

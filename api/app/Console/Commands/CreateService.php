@@ -57,7 +57,20 @@ class CreateService extends Command
      */
     public function createServiceClass(): void
     {
-        $content = "<?php\n\ndeclare(strict_types=1);\n\nnamespace App\Http\Services;\n\nclass $this->class_name" . " extends Controller\n{\n\n}";
+        $content = <<<EOD
+        <?php
+
+        declare(strict_types=1);
+
+        namespace App\Http\Services;
+
+        use App\Http\Controllers\Controller;
+
+        class {$this->class_name} extends Controller
+        {
+
+        }
+        EOD;
         file_put_contents($this->file_name, $content);
     }
 
