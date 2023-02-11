@@ -45,7 +45,7 @@ interface ShopInfoRepositoryInterface
      * 店舗情報の詳細を取得
      *
      * @param string $shopInfoId
-     * @return ShopInformation
+     * @return Collection
      */
-    public function show(string $shopInfoId): ShopInformation;
+    public function show(string $shopInfoId): Collection;
 }

@@ -8,7 +8,13 @@ use App\Http\Resources\ShopInfoResource;
 
 class DetailShopInfoResponder
 {
-    public function response($shopInfoData)
+    /**
+     * 店舗詳細情報のJSONレスポンスを返す
+     *
+     * @param Collection $shopInfoData
+     * @return ShopInfoResource
+     */
+    public function response($shopInfoData): ShopInfoResource
     {
         return new ShopInfoResource($shopInfoData);
     }

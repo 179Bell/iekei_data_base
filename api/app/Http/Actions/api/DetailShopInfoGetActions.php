@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ShopInfoResource;
 use App\Http\Responders\api\DetailShopInfoResponder as ShopInfoResponder;
 use App\Http\Services\ShopInfoService;
-use Illuminate\Http\Response;
 
 class DetailShopInfoGetActions extends Controller
 {
@@ -24,7 +23,7 @@ class DetailShopInfoGetActions extends Controller
      * 店舗詳細情報を取得する
      *
      * @param string $id
-     * @return Response
+     * @return ShopInfoResource
      */
     public function __invoke(string $id): ShopInfoResource
     {

@@ -69,9 +69,9 @@ class ShopInfoService extends Controller
      * 店舗情報の詳細を取得
      *
      * @param string $shopInfoId
-     * @return ShopInformation
+     * @return Collection
      */
-    public function getShopInfoDetail(string $shopInfoId): ShopInformation
+    public function getShopInfoDetail(string $shopInfoId): Collection
     {
         return $this->repository->show($shopInfoId);
     }
