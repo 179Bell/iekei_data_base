@@ -10,7 +10,6 @@ class IndexShopInfoResponder
 {
     public function response($shopInfo)
     {
-        // return ShopInfoResource::collection($shopInfo);
-        return $shopInfo->toJson();
+        return new ShopInfoResource($shopInfo);
     }
 }
