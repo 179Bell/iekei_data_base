@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/shop_info', \App\Http\Actions\api\IndexShopInfoGetActions::class);
+Route::get('/shop_info/{id}', \App\Http\Actions\api\DetailShopInfoGetActions::class);

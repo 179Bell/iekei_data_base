@@ -35,8 +35,8 @@ class ShopInfoRepository implements ShopInfoRepositoryInterface
         return $shopInfo->save();
     }
 
-    public function show(string $shopInfoId): ShopInformation
+    public function show(string $shopInfoId): Collection
     {
-        return ShopInformation::find($shopInfoId);
+        return ShopInformation::where('id', $shopInfoId)->get();
     }
 }

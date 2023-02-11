@@ -6,10 +6,10 @@ namespace App\Http\Actions\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ShopInfoResource;
-use App\Http\Responders\api\IndexShopInfoResponder as ShopInfoResponder;
+use App\Http\Responders\api\DetailShopInfoResponder as ShopInfoResponder;
 use App\Http\Services\ShopInfoService;
 
-class IndexShopInfoGetActions extends Controller
+class DetailShopInfoGetActions extends Controller
 {
     public function __construct(
         ShopInfoService $shopInfoService,
@@ -20,13 +20,14 @@ class IndexShopInfoGetActions extends Controller
     }
 
     /**
-     * 全店舗情報のJSONレスポンスを返す
+     * 店舗詳細情報を取得する
      *
+     * @param string $id
      * @return ShopInfoResource
      */
-    public function __invoke(): ShopInfoResource
+    public function __invoke(string $id): ShopInfoResource
     {
-        $shopInfo = $this->shopInfoService->getAll();
-        return $this->shopInfoResponder->response($shopInfo);
+        $shopInfoData = $this->shopInfoService->getShopInfoDetail($id);
+        return $this->shopInfoResponder->response($shopInfoData);
     }
 }
