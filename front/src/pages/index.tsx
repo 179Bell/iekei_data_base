@@ -1,3 +1,4 @@
+import { HeroSection } from '@/components/templates/HeroSection';
 import { Header } from '@/components/organisms/Header';
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
         <title>イエケイタベタイ</title>
       </Head>
       <Header />
+      <HeroSection />
     </>
   );
 };
