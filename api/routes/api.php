@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Auth\Api\LoginController;
+use App\Http\Controllers\Auth\Api\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/register', [RegisterController::class, 'register']);
+// Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/shop_info', \App\Http\Actions\api\IndexShopInfoGetActions::class);
 Route::get('/shop_info/{id}', \App\Http\Actions\api\DetailShopInfoGetActions::class);

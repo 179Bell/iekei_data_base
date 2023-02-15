@@ -20,7 +20,7 @@ return new class () extends Migration {
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('admin')->comment('管理者権限');
+            $table->boolean('admin')->default(false)->comment('管理者権限');
             $table->rememberToken();
             $table->timestamps();
         });
