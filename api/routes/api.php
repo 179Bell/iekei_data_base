@@ -25,5 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/shop_info', \App\Http\Actions\api\IndexShopInfoGetActions::class);
-Route::get('/shop_info/{id}', \App\Http\Actions\api\DetailShopInfoGetActions::class);
+Route::prefix('v1')->group((function () {
+    Route::get('/shops', \App\Http\Actions\api\IndexShopInfoGetActions::class);
+    Route::get('/shops/{id}', \App\Http\Actions\api\DetailShopInfoGetActions::class);
+}));
