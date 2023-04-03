@@ -1,11 +1,10 @@
 import { Header } from '@/components/organisms/Header';
 import { Button, Container, FormControl, FormLabel, Input } from '@chakra-ui/react';
-import axios from 'axios';
 import { NextPage } from 'next';
 import Head from 'next/head';
 // import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useMutation } from 'react-query';
+import { usePost } from '@/hooks/usePost';
 
 type FormValues = {
   email: string;
@@ -13,23 +12,9 @@ type FormValues = {
 };
 
 const Login: NextPage = () => {
+  const endPoint = 'api/login';
   const { register, handleSubmit } = useForm<FormValues>();
-  // const router = useRouter();
-
-  axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = 'http://localhost:8080';
-
-  const { mutate } = useMutation({
-    mutationFn: (data) =>
-      axios.get('/sanctum/csrf-cookie').then(() => {
-        axios.post('api/login', data);
-      }),
-    onSuccess: () => {
-      // ログイン先の画面が無いため一旦成功したらアラートを出す
-      alert('ログインに成功しました。');
-    },
-  });
-
+  const mutate = usePost(endPoint);
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     mutate(data);
   };
