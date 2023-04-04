@@ -3,9 +3,7 @@ import Head from 'next/head';
 import { Header } from '@/components/organisms/Header';
 import { Button, Container, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useMutation } from 'react-query';
-import axios from 'axios';
-import { useRouter } from 'next/router';
+import { usePost } from '@/hooks/usePost';
 
 type FormValues = {
   name: string;
@@ -14,22 +12,9 @@ type FormValues = {
 };
 
 const Register: NextPage = () => {
+  const endPoint = 'api/register';
   const { register, handleSubmit } = useForm<FormValues>();
-  const router = useRouter();
-
-  axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = 'http://localhost:8080';
-
-  const { mutate } = useMutation({
-    mutationFn: (data) =>
-      axios.get('/sanctum/csrf-cookie').then(() => {
-        axios.post('api/register', data);
-      }),
-    onSuccess: () => {
-      // 【TODO】動作確認のために一旦ルートに遷移させる。トップページができたらトップページへ
-      router.push('/');
-    },
-  });
+  const mutate = usePost(endPoint);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     mutate(data);
