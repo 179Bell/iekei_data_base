@@ -6,7 +6,7 @@ export const usePost = ($endPoint: string) => {
   const router = useRouter();
 
   axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = 'http://localhost:8080';
+  axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
   const { mutate } = useMutation({
     mutationFn: (data) =>
